@@ -1,4 +1,4 @@
-"""MCP v2 server for the intentionally unsafe fake refund operation."""
+"""MCP v2 server for the idempotent fake refund operation."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ from demo.refund.faults import (
 )
 from demo.refund.store import DEFAULT_DB_PATH, RefundStore
 
-mcp = MCPServer("Rosso Refund Demo")
+mcp = MCPServer("Rosso Idempotent Refund Demo")
 
 
 def _store() -> RefundStore:
@@ -24,14 +24,6 @@ def _store() -> RefundStore:
 
 def _fault_state_path() -> Path:
     return Path(os.environ.get("ROSSO_REFUND_FAULT_STATE", DEFAULT_FAULT_STATE))
-
-
-def _disconnect_after_commit_if_armed(receipt: dict[str, Any]) -> None:
-    disconnect_after_commit_if_armed(
-        receipt,
-        fault=os.environ.get("ROSSO_REFUND_FAULT", FAULT_NONE),
-        state_path=_fault_state_path(),
-    )
 
 
 @mcp.tool()
@@ -50,17 +42,19 @@ def get_order(order_id: str) -> dict[str, Any]:
 def refund_order(
     order_id: str, amount: int, operation_id: str
 ) -> dict[str, Any]:
-    """Refund a positive whole-dollar amount to a fake order.
-
-    This first server is intentionally non-idempotent. Repeating the call creates
-    another committed refund effect.
-    """
+    """Refund once per stable business operation ID, returning cached receipts."""
     if isinstance(amount, bool) or not isinstance(amount, int):
         raise TypeError("amount must be a whole-dollar integer")
-    receipt = _store().refund_order(
-        order_id, amount * 100, operation_id=operation_id
+    receipt = _store().refund_order_idempotently(
+        order_id,
+        amount * 100,
+        operation_id=operation_id,
     )
-    _disconnect_after_commit_if_armed(receipt)
+    disconnect_after_commit_if_armed(
+        receipt,
+        fault=os.environ.get("ROSSO_REFUND_FAULT", FAULT_NONE),
+        state_path=_fault_state_path(),
+    )
     return {
         "refund_id": receipt["refund_id"],
         "order_id": receipt["order_id"],

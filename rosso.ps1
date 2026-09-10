@@ -1,6 +1,6 @@
 param(
     [Parameter(Position = 0)]
-    [ValidateSet("normal", "double-refund", "trace", "cost", "state", "check")]
+    [ValidateSet("normal", "double-refund", "double-refund-neutral", "idempotent", "trace", "cost", "state", "check")]
     [string]$Command,
 
     [Parameter(Position = 1)]
@@ -10,7 +10,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 if (-not $Command) {
-    Write-Host "Usage: .\rosso.ps1 <normal|double-refund|trace|cost|state|check> [trace]"
+    Write-Host "Usage: .\rosso.ps1 <normal|double-refund|double-refund-neutral|idempotent|trace|cost|state|check> [trace]"
     exit 2
 }
 
@@ -30,6 +30,12 @@ try {
         }
         "double-refund" {
             & $pythonPath -m demo.refund.experiment double-refund
+        }
+        "double-refund-neutral" {
+            & $pythonPath -m demo.refund.experiment double-refund --retry-policy neutral
+        }
+        "idempotent" {
+            & $pythonPath -m demo.refund.experiment idempotent
         }
         "trace" {
             if ($Trace) {

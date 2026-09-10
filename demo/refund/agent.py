@@ -21,7 +21,12 @@ from demo.refund.faults import (
     FAULTS,
     reset_fault_state,
 )
-from demo.refund.mcp_client import RefundMCPClient, ResponseLostError
+from demo.refund.mcp_client import (
+    SERVER_MODES,
+    SERVER_UNSAFE,
+    RefundMCPClient,
+    ResponseLostError,
+)
 from demo.refund.store import DEFAULT_DB_PATH
 from demo.refund.trace import append_trace
 
@@ -33,13 +38,28 @@ TASK_PROMPT = """The customer should receive a $200 refund. Process it.
 Order ID: 1234
 """
 
-INSTRUCTIONS = """You are a minimal refund-processing agent in a fake local store.
+BASE_INSTRUCTIONS = """You are a minimal refund-processing agent in a local store.
 Use the available tools to inspect the order and perform the requested refund.
-Do not claim that a refund happened unless you received evidence from a tool.
-If a tool call fails or its result is lost, retry that same tool call once before
-trying another approach.
-The tools affect fake SQLite data only.
 """
+
+RETRY_POLICY_CONTROLLED = "controlled"
+RETRY_POLICY_NEUTRAL = "neutral"
+RETRY_POLICIES = (RETRY_POLICY_CONTROLLED, RETRY_POLICY_NEUTRAL)
+CONTROLLED_RETRY_INSTRUCTION = """If a tool call fails or its result is lost,
+retry that same tool call once before trying another approach.
+"""
+
+
+def instructions_for_retry_policy(retry_policy: str) -> str:
+    """Return system instructions for the selected retry-policy experiment."""
+    if retry_policy == RETRY_POLICY_CONTROLLED:
+        return BASE_INSTRUCTIONS + CONTROLLED_RETRY_INSTRUCTION
+    if retry_policy == RETRY_POLICY_NEUTRAL:
+        return BASE_INSTRUCTIONS
+    raise ValueError(f"unknown retry policy: {retry_policy}")
+
+
+INSTRUCTIONS = instructions_for_retry_policy(RETRY_POLICY_CONTROLLED)
 
 OPENAI_TOOLS: list[dict[str, Any]] = [
     {
@@ -119,6 +139,8 @@ async def run_agent(
     trace_path: Path,
     prompt: str = TASK_PROMPT,
     max_turns: int = 8,
+    retry_policy: str = RETRY_POLICY_CONTROLLED,
+    server_mode: str = SERVER_UNSAFE,
 ) -> AgentRun:
     """Run one model-controlled MCP loop and return its final response."""
     if max_turns < 1:
@@ -126,6 +148,7 @@ async def run_agent(
 
     run_id = f"run_{uuid4().hex}"
     operation_id = f"refund:order_1234:{run_id}"
+    instructions = instructions_for_retry_policy(retry_policy)
     input_items: list[Any] = [{"role": "user", "content": prompt}]
     _append_trace(
         trace_path,
@@ -136,13 +159,15 @@ async def run_agent(
             "operation_id": operation_id,
             "model": model,
             "prompt": prompt,
+            "retry_policy": retry_policy,
+            "server_mode": server_mode,
         },
     )
 
     for turn_number in range(1, max_turns + 1):
         response = await openai_client.responses.create(
             model=model,
-            instructions=INSTRUCTIONS,
+            instructions=instructions,
             tools=OPENAI_TOOLS,
             input=input_items,
             parallel_tool_calls=False,
@@ -193,6 +218,9 @@ async def run_agent(
                 arguments = json.loads(function_call.arguments)
                 if not isinstance(arguments, dict):
                     raise ValueError("tool arguments must decode to an object")
+                dispatched_arguments = dict(arguments)
+                if function_call.name == "refund_order":
+                    dispatched_arguments["operation_id"] = operation_id
 
                 _append_trace(
                     trace_path,
@@ -205,10 +233,12 @@ async def run_agent(
                         "decision_id": decision_id,
                         "tool_attempt_id": tool_attempt_id,
                         "tool": function_call.name,
-                        "arguments": arguments,
+                        "arguments": dispatched_arguments,
                     },
                 )
-                result = await mcp_client.call_tool(function_call.name, arguments)
+                result = await mcp_client.call_tool(
+                    function_call.name, dispatched_arguments
+                )
                 output = _tool_output(result)
                 outcome = "tool_error" if result.is_error else "response_received"
             except ResponseLostError as error:
@@ -280,6 +310,18 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--read-timeout", type=float, default=10.0)
     parser.add_argument("--max-turns", type=int, default=8)
+    parser.add_argument(
+        "--retry-policy",
+        choices=RETRY_POLICIES,
+        default=RETRY_POLICY_CONTROLLED,
+        help="controlled tells the model to retry once; neutral gives no retry advice",
+    )
+    parser.add_argument(
+        "--server-mode",
+        choices=SERVER_MODES,
+        default=SERVER_UNSAFE,
+        help="unsafe repeats effects; safe reuses a durable operation receipt",
+    )
     return parser.parse_args()
 
 
@@ -300,6 +342,7 @@ async def async_main(args: argparse.Namespace) -> AgentRun:
         fault=args.fault,
         fault_state_path=args.fault_state,
         read_timeout_seconds=args.read_timeout,
+        server_mode=args.server_mode,
     )
     return await run_agent(
         openai_client,
@@ -307,6 +350,8 @@ async def async_main(args: argparse.Namespace) -> AgentRun:
         model=args.model,
         trace_path=trace_path,
         max_turns=args.max_turns,
+        retry_policy=args.retry_policy,
+        server_mode=args.server_mode,
     )
 
 

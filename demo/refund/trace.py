@@ -95,6 +95,8 @@ def format_trace(events: list[dict[str, Any]]) -> str:
         "",
         f"run:       {started.get('run_id', 'unknown')}",
         f"model:     {started.get('model', 'unknown')}",
+        f"retry:     {started.get('retry_policy', 'not recorded')}",
+        f"server:    {started.get('server_mode', 'not recorded')}",
         f"operation: {started.get('operation_id', 'unknown')}",
         "",
     ]
@@ -131,6 +133,12 @@ def format_trace(events: list[dict[str, Any]]) -> str:
             lines.append(f"     <- {label}")
             output = _decode_output(event.get("output"))
             lines.append(f"        {_compact(output)}")
+            if isinstance(output, dict):
+                result = output.get("result")
+                if isinstance(result, dict) and result.get("reused") is True:
+                    lines.append(
+                        "        IDEMPOTENT RECEIPT REUSED / NO NEW EFFECT"
+                    )
         elif event_type == "run_completed":
             lines.extend(["", "FINAL MODEL OUTPUT", str(event.get("final_text", ""))])
 

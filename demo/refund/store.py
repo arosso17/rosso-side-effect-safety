@@ -1,4 +1,4 @@
-"""Authoritative SQLite state for the intentionally unsafe refund demo."""
+"""Authoritative SQLite state for the unsafe and idempotent refund demos."""
 
 from __future__ import annotations
 
@@ -15,8 +15,12 @@ DEFAULT_DB_PATH = Path(__file__).with_name("store.db")
 SCHEMA_PATH = Path(__file__).with_name("schema.sql")
 
 
+class IdempotencyConflictError(ValueError):
+    """One operation ID was reused for different business arguments."""
+
+
 class RefundStore:
-    """Small fake ecommerce store whose refund operation is not idempotent."""
+    """Fake ecommerce state with explicit unsafe and idempotent operations."""
 
     def __init__(self, db_path: str | Path = DEFAULT_DB_PATH) -> None:
         self.db_path = Path(db_path)
@@ -30,6 +34,7 @@ class RefundStore:
         """Replace demo business state with one unrefunded $500 order."""
         self.initialize()
         with self._connect() as connection:
+            connection.execute("DELETE FROM idempotency_receipts")
             connection.execute("DELETE FROM refunds")
             connection.execute("DELETE FROM orders")
             connection.execute(
@@ -116,6 +121,83 @@ class RefundStore:
             "amount_cents": amount_cents,
             "operation_id": operation_id,
             "committed": True,
+            "reused": False,
+        }
+
+    def refund_order_idempotently(
+        self,
+        order_id: str,
+        amount_cents: int,
+        *,
+        operation_id: str,
+    ) -> dict[str, Any]:
+        """Commit one refund or return its durable receipt on a retry."""
+        if isinstance(amount_cents, bool) or not isinstance(amount_cents, int):
+            raise TypeError("amount_cents must be an integer")
+        if amount_cents <= 0:
+            raise ValueError("amount_cents must be positive")
+        if not isinstance(operation_id, str) or not operation_id.strip():
+            raise ValueError("operation_id must be a non-empty string")
+
+        self.initialize()
+        with self._connect() as connection:
+            # Serialize claim/check/commit across concurrent SQLite writers.
+            connection.execute("BEGIN IMMEDIATE")
+            existing = connection.execute(
+                """
+                SELECT operation_id, order_id, amount_cents, refund_id
+                FROM idempotency_receipts
+                WHERE operation_id = ?
+                """,
+                (operation_id,),
+            ).fetchone()
+            if existing is not None:
+                if (
+                    existing["order_id"] != order_id
+                    or existing["amount_cents"] != amount_cents
+                ):
+                    raise IdempotencyConflictError(
+                        "operation_id was already used with different arguments"
+                    )
+                return {
+                    "refund_id": existing["refund_id"],
+                    "order_id": existing["order_id"],
+                    "amount_cents": existing["amount_cents"],
+                    "operation_id": existing["operation_id"],
+                    "committed": True,
+                    "reused": True,
+                }
+
+            order = connection.execute(
+                "SELECT order_id FROM orders WHERE order_id = ?", (order_id,)
+            ).fetchone()
+            if order is None:
+                raise LookupError(f"order {order_id!r} does not exist")
+
+            refund_id = f"refund_{uuid4().hex}"
+            connection.execute(
+                """
+                INSERT INTO refunds (refund_id, order_id, amount_cents, operation_id)
+                VALUES (?, ?, ?, ?)
+                """,
+                (refund_id, order_id, amount_cents, operation_id),
+            )
+            connection.execute(
+                """
+                INSERT INTO idempotency_receipts (
+                    operation_id, tool_name, order_id, amount_cents, refund_id
+                ) VALUES (?, 'refund_order', ?, ?, ?)
+                """,
+                (operation_id, order_id, amount_cents, refund_id),
+            )
+
+        return {
+            "refund_id": refund_id,
+            "order_id": order_id,
+            "amount_cents": amount_cents,
+            "operation_id": operation_id,
+            "committed": True,
+            "reused": False,
         }
 
     @contextmanager

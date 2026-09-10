@@ -21,7 +21,12 @@ def test_mcp_tools_read_and_commit_authoritative_state(
                 "get_order", {"order_id": DEMO_ORDER_ID}
             )
             refund = await client.call_tool(
-                "refund_order", {"order_id": DEMO_ORDER_ID, "amount": 200}
+                "refund_order",
+                {
+                    "order_id": DEMO_ORDER_ID,
+                    "amount": 200,
+                    "operation_id": "refund:order_1234:test_mcp_server",
+                },
             )
             assert initial.is_error is False
             assert refund.is_error is False

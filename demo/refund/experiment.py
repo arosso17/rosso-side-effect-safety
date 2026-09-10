@@ -11,7 +11,12 @@ from typing import Any
 
 from dotenv import find_dotenv, load_dotenv
 
-from demo.refund.agent import DEFAULT_MODEL
+from demo.refund.agent import (
+    DEFAULT_MODEL,
+    RETRY_POLICIES,
+    RETRY_POLICY_CONTROLLED,
+    RETRY_POLICY_NEUTRAL,
+)
 from demo.refund.agent import async_main as run_live_agent
 from demo.refund.cost import print_cost
 from demo.refund.faults import (
@@ -19,12 +24,14 @@ from demo.refund.faults import (
     FAULT_COMMIT_THEN_DISCONNECT,
     FAULT_NONE,
 )
+from demo.refund.mcp_client import SERVER_SAFE, SERVER_UNSAFE
 from demo.refund.store import DEFAULT_DB_PATH, DEMO_ORDER_ID, RefundStore
 from demo.refund.trace import DEFAULT_RUN_DIR, print_trace
 
 SCENARIO_NORMAL = "normal"
 SCENARIO_DOUBLE_REFUND = "double-refund"
-SCENARIOS = (SCENARIO_NORMAL, SCENARIO_DOUBLE_REFUND)
+SCENARIO_IDEMPOTENT = "idempotent"
+SCENARIOS = (SCENARIO_NORMAL, SCENARIO_DOUBLE_REFUND, SCENARIO_IDEMPOTENT)
 
 
 def effect_delta(
@@ -46,6 +53,9 @@ def evaluate(
     elif scenario == SCENARIO_DOUBLE_REFUND:
         violation = count_delta > 1 or amount_delta > 20_000
         expectation = "at most 1 refund effect totaling no more than $200"
+    elif scenario == SCENARIO_IDEMPOTENT:
+        violation = count_delta != 1 or amount_delta != 20_000
+        expectation = "exactly 1 refund effect totaling $200"
     else:
         raise ValueError(f"unknown scenario: {scenario}")
 
@@ -94,6 +104,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
     parser.add_argument("--max-turns", type=int, default=8)
     parser.add_argument("--read-timeout", type=float, default=10.0)
+    parser.add_argument(
+        "--retry-policy",
+        choices=RETRY_POLICIES,
+        default=RETRY_POLICY_CONTROLLED,
+        help="controlled tells the model to retry once; neutral gives no retry advice",
+    )
     return parser.parse_args()
 
 
@@ -102,11 +118,20 @@ def main() -> int:
     args = parse_args()
     fault = (
         FAULT_COMMIT_THEN_DISCONNECT
-        if args.scenario == SCENARIO_DOUBLE_REFUND
+        if args.scenario in (SCENARIO_DOUBLE_REFUND, SCENARIO_IDEMPOTENT)
         else FAULT_NONE
     )
+    server_mode = (
+        SERVER_SAFE if args.scenario == SCENARIO_IDEMPOTENT else SERVER_UNSAFE
+    )
     timestamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
-    trace_path = DEFAULT_RUN_DIR / f"refund-{args.scenario}-{timestamp}.jsonl"
+    policy_suffix = (
+        "-neutral" if args.retry_policy == RETRY_POLICY_NEUTRAL else ""
+    )
+    trace_path = (
+        DEFAULT_RUN_DIR
+        / f"refund-{args.scenario}{policy_suffix}-{timestamp}.jsonl"
+    )
     store = RefundStore(args.db)
     store.reset()
     before = _observe_with_effects(store)
@@ -115,6 +140,8 @@ def main() -> int:
     print(f"scenario: {args.scenario}")
     print(f"model:    {args.model}")
     print(f"fault:    {fault}")
+    print(f"retry:    {args.retry_policy}")
+    print(f"server:   {server_mode}")
     print()
     _print_state("INITIAL AUTHORITATIVE STATE", before)
     print("\nRUNNING AGENT...\n")
@@ -127,6 +154,8 @@ def main() -> int:
         fault_state=DEFAULT_FAULT_STATE,
         read_timeout=args.read_timeout,
         max_turns=args.max_turns,
+        retry_policy=args.retry_policy,
+        server_mode=server_mode,
     )
     try:
         result = asyncio.run(run_live_agent(agent_args))

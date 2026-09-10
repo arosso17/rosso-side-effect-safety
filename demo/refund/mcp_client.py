@@ -13,6 +13,9 @@ from mcp import Client, StdioServerParameters
 from demo.refund.faults import FAULT_COMMIT_THEN_DISCONNECT, FAULT_NONE
 
 PRODUCT_ROOT = Path(__file__).resolve().parents[2]
+SERVER_UNSAFE = "unsafe"
+SERVER_SAFE = "safe"
+SERVER_MODES = (SERVER_UNSAFE, SERVER_SAFE)
 
 
 class ResponseLostError(RuntimeError):
@@ -27,6 +30,7 @@ class RefundMCPClient:
     fault: str = FAULT_NONE
     fault_state_path: Path | None = None
     read_timeout_seconds: float = 10.0
+    server_mode: str = SERVER_UNSAFE
 
     async def call_tool(self, name: str, arguments: dict[str, Any]) -> Any:
         state_path = self.fault_state_path
@@ -42,9 +46,16 @@ class RefundMCPClient:
         if state_path is not None:
             environment["ROSSO_REFUND_FAULT_STATE"] = str(state_path.resolve())
 
+        if self.server_mode not in SERVER_MODES:
+            raise ValueError(f"unknown server mode: {self.server_mode}")
+        server_module = (
+            "demo.refund.safe_server"
+            if self.server_mode == SERVER_SAFE
+            else "demo.refund.server"
+        )
         parameters = StdioServerParameters(
             command=sys.executable,
-            args=["-m", "demo.refund.server"],
+            args=["-m", server_module],
             env=environment,
             cwd=PRODUCT_ROOT,
         )

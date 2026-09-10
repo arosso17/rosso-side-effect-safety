@@ -5,7 +5,11 @@ from typing import Any
 import pytest
 
 from demo.refund.faults import FAULT_COMMIT_THEN_DISCONNECT
-from demo.refund.mcp_client import RefundMCPClient, ResponseLostError
+from demo.refund.mcp_client import (
+    SERVER_SAFE,
+    RefundMCPClient,
+    ResponseLostError,
+)
 from demo.refund.store import DEMO_ORDER_ID, RefundStore
 
 
@@ -14,6 +18,7 @@ def test_commit_then_disconnect_commits_before_losing_first_response(
 ) -> None:
     db_path = tmp_path / "store.db"
     fault_state = tmp_path / "fault.used"
+    operation_id = "refund:order_1234:unsafe_request_9876"
     store = RefundStore(db_path)
     store.reset()
     client = RefundMCPClient(
@@ -24,7 +29,12 @@ def test_commit_then_disconnect_commits_before_losing_first_response(
 
     async def call_refund() -> Any:
         return await client.call_tool(
-            "refund_order", {"order_id": DEMO_ORDER_ID, "amount": 200}
+            "refund_order",
+            {
+                "order_id": DEMO_ORDER_ID,
+                "amount": 200,
+                "operation_id": operation_id,
+            },
         )
 
     with pytest.raises(ResponseLostError, match="outcome is unknown"):
@@ -40,3 +50,44 @@ def test_commit_then_disconnect_commits_before_losing_first_response(
     after_retry = store.observe_order(DEMO_ORDER_ID)
     assert after_retry["refund_count"] == 2
     assert after_retry["refunded_cents"] == 40_000
+    assert {
+        refund["operation_id"] for refund in store.list_refunds(DEMO_ORDER_ID)
+    } == {operation_id}
+
+
+def test_idempotent_server_reuses_committed_receipt_after_response_loss(
+    tmp_path: Path,
+) -> None:
+    db_path = tmp_path / "store.db"
+    fault_state = tmp_path / "fault.used"
+    operation_id = "refund:order_1234:request_9876"
+    store = RefundStore(db_path)
+    store.reset()
+    client = RefundMCPClient(
+        db_path=db_path,
+        fault=FAULT_COMMIT_THEN_DISCONNECT,
+        fault_state_path=fault_state,
+        server_mode=SERVER_SAFE,
+    )
+
+    async def call_refund() -> Any:
+        return await client.call_tool(
+            "refund_order",
+            {
+                "order_id": DEMO_ORDER_ID,
+                "amount": 200,
+                "operation_id": operation_id,
+            },
+        )
+
+    with pytest.raises(ResponseLostError, match="outcome is unknown"):
+        asyncio.run(call_refund())
+
+    retry_result = asyncio.run(call_refund())
+    assert retry_result.is_error is False
+    assert retry_result.structured_content["reused"] is True
+    state = store.observe_order(DEMO_ORDER_ID)
+    assert state["refund_count"] == 1
+    assert state["refunded_cents"] == 20_000
+    refunds = store.list_refunds(DEMO_ORDER_ID)
+    assert refunds[0]["operation_id"] == operation_id

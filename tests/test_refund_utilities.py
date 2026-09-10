@@ -3,6 +3,7 @@ from decimal import Decimal
 from demo.refund.cost import estimate_cost, format_cost
 from demo.refund.experiment import (
     SCENARIO_DOUBLE_REFUND,
+    SCENARIO_IDEMPOTENT,
     SCENARIO_NORMAL,
     evaluate,
 )
@@ -30,6 +31,17 @@ def test_evaluator_reports_normal_observation_without_claiming_safety() -> None:
     assert report.startswith("NO VIOLATION OBSERVED")
 
 
+def test_evaluator_accepts_one_idempotent_effect_without_claiming_safety() -> None:
+    before = {"refund_count": 0, "refunded_cents": 0}
+    after = {"refund_count": 1, "refunded_cents": 20_000}
+
+    report, violation = evaluate(SCENARIO_IDEMPOTENT, before, after)
+
+    assert violation is False
+    assert report.startswith("NO VIOLATION OBSERVED")
+    assert "exactly 1 refund effect totaling $200" in report
+
+
 def test_pretty_trace_highlights_lost_response_and_retry() -> None:
     events = [
         {
@@ -37,6 +49,8 @@ def test_pretty_trace_highlights_lost_response_and_retry() -> None:
             "run_id": "run_1",
             "model": "test-model",
             "operation_id": "operation_1",
+            "retry_policy": "neutral",
+            "server_mode": "safe",
         },
         {
             "event": "model_turn",
@@ -73,6 +87,12 @@ def test_pretty_trace_highlights_lost_response_and_retry() -> None:
             "tool_attempt_id": "attempt_2",
         },
         {
+            "event": "tool_attempt_finished",
+            "tool_attempt_id": "attempt_2",
+            "outcome": "response_received",
+            "output": '{"result":{"reused":true}}',
+        },
+        {
             "event": "run_completed",
             "final_text": "done",
         },
@@ -82,6 +102,9 @@ def test_pretty_trace_highlights_lost_response_and_retry() -> None:
 
     assert "RESPONSE LOST / OUTCOME AMBIGUOUS" in rendered
     assert "refund_order" in rendered
+    assert "retry:     neutral" in rendered
+    assert "server:    safe" in rendered
+    assert "IDEMPOTENT RECEIPT REUSED / NO NEW EFFECT" in rendered
     assert "22 input / 7 output" in rendered
     assert "origin: MODEL" in rendered
 

@@ -15,3 +15,12 @@ CREATE TABLE IF NOT EXISTS refunds (
 );
 
 CREATE INDEX IF NOT EXISTS refunds_order_id_idx ON refunds(order_id);
+
+CREATE TABLE IF NOT EXISTS idempotency_receipts (
+    operation_id TEXT PRIMARY KEY,
+    tool_name TEXT NOT NULL,
+    order_id TEXT NOT NULL REFERENCES orders(order_id),
+    amount_cents INTEGER NOT NULL CHECK (amount_cents > 0),
+    refund_id TEXT NOT NULL UNIQUE REFERENCES refunds(refund_id) ON DELETE CASCADE,
+    created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+);
