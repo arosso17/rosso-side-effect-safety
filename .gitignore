@@ -1,0 +1,31 @@
+# Environments and secrets
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+
+# Python and test output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Runtime state and authoritative demo databases
+.run/
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Generated release bundles
+dist/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

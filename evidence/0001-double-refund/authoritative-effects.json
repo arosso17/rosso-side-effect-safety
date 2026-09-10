@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "initial": {
+    "order_id": "1234",
+    "refund_count": 0,
+    "refunded_cents": 0,
+    "total_cents": 50000
+  },
+  "final": {
+    "order_id": "1234",
+    "refund_count": 2,
+    "refunded_cents": 40000,
+    "refunds": [
+      {
+        "amount_cents": 20000,
+        "refund_id": "refund_committed_response_lost"
+      },
+      {
+        "amount_cents": 20000,
+        "refund_id": "refund_retry_visible"
+      }
+    ],
+    "total_cents": 50000
+  },
+  "fault_marker": {
+    "committed": true,
+    "fault": "commit_then_disconnect",
+    "refund_id": "refund_committed_response_lost"
+  },
+  "verdict": "VIOLATION FOUND"
+}
