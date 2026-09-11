@@ -1,0 +1,1685 @@
+{
+  "sha256": "d4ed559acb8b77cbec4ee4ddab8fb2cac10e9784947e42d11ec91cf2621e6917",
+  "trials": [
+    {
+      "block": 1,
+      "cell_trial_number": 1,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 1
+    },
+    {
+      "block": 1,
+      "cell_trial_number": 1,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 2
+    },
+    {
+      "block": 1,
+      "cell_trial_number": 1,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 3
+    },
+    {
+      "block": 1,
+      "cell_trial_number": 1,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 4
+    },
+    {
+      "block": 1,
+      "cell_trial_number": 1,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 5
+    },
+    {
+      "block": 1,
+      "cell_trial_number": 1,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 6
+    },
+    {
+      "block": 1,
+      "cell_trial_number": 1,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 7
+    },
+    {
+      "block": 1,
+      "cell_trial_number": 1,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 8
+    },
+    {
+      "block": 2,
+      "cell_trial_number": 2,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 9
+    },
+    {
+      "block": 2,
+      "cell_trial_number": 2,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 10
+    },
+    {
+      "block": 2,
+      "cell_trial_number": 2,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 11
+    },
+    {
+      "block": 2,
+      "cell_trial_number": 2,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 12
+    },
+    {
+      "block": 2,
+      "cell_trial_number": 2,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 13
+    },
+    {
+      "block": 2,
+      "cell_trial_number": 2,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 14
+    },
+    {
+      "block": 2,
+      "cell_trial_number": 2,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 15
+    },
+    {
+      "block": 2,
+      "cell_trial_number": 2,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 16
+    },
+    {
+      "block": 3,
+      "cell_trial_number": 3,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 17
+    },
+    {
+      "block": 3,
+      "cell_trial_number": 3,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 18
+    },
+    {
+      "block": 3,
+      "cell_trial_number": 3,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 19
+    },
+    {
+      "block": 3,
+      "cell_trial_number": 3,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 20
+    },
+    {
+      "block": 3,
+      "cell_trial_number": 3,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 21
+    },
+    {
+      "block": 3,
+      "cell_trial_number": 3,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 22
+    },
+    {
+      "block": 3,
+      "cell_trial_number": 3,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 23
+    },
+    {
+      "block": 3,
+      "cell_trial_number": 3,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 24
+    },
+    {
+      "block": 4,
+      "cell_trial_number": 4,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 25
+    },
+    {
+      "block": 4,
+      "cell_trial_number": 4,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 26
+    },
+    {
+      "block": 4,
+      "cell_trial_number": 4,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 27
+    },
+    {
+      "block": 4,
+      "cell_trial_number": 4,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 28
+    },
+    {
+      "block": 4,
+      "cell_trial_number": 4,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 29
+    },
+    {
+      "block": 4,
+      "cell_trial_number": 4,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 30
+    },
+    {
+      "block": 4,
+      "cell_trial_number": 4,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 31
+    },
+    {
+      "block": 4,
+      "cell_trial_number": 4,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 32
+    },
+    {
+      "block": 5,
+      "cell_trial_number": 5,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 33
+    },
+    {
+      "block": 5,
+      "cell_trial_number": 5,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 34
+    },
+    {
+      "block": 5,
+      "cell_trial_number": 5,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 35
+    },
+    {
+      "block": 5,
+      "cell_trial_number": 5,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 36
+    },
+    {
+      "block": 5,
+      "cell_trial_number": 5,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 37
+    },
+    {
+      "block": 5,
+      "cell_trial_number": 5,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 38
+    },
+    {
+      "block": 5,
+      "cell_trial_number": 5,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 39
+    },
+    {
+      "block": 5,
+      "cell_trial_number": 5,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 40
+    },
+    {
+      "block": 6,
+      "cell_trial_number": 6,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 41
+    },
+    {
+      "block": 6,
+      "cell_trial_number": 6,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 42
+    },
+    {
+      "block": 6,
+      "cell_trial_number": 6,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 43
+    },
+    {
+      "block": 6,
+      "cell_trial_number": 6,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 44
+    },
+    {
+      "block": 6,
+      "cell_trial_number": 6,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 45
+    },
+    {
+      "block": 6,
+      "cell_trial_number": 6,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 46
+    },
+    {
+      "block": 6,
+      "cell_trial_number": 6,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 47
+    },
+    {
+      "block": 6,
+      "cell_trial_number": 6,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 48
+    },
+    {
+      "block": 7,
+      "cell_trial_number": 7,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 49
+    },
+    {
+      "block": 7,
+      "cell_trial_number": 7,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 50
+    },
+    {
+      "block": 7,
+      "cell_trial_number": 7,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 51
+    },
+    {
+      "block": 7,
+      "cell_trial_number": 7,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 52
+    },
+    {
+      "block": 7,
+      "cell_trial_number": 7,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 53
+    },
+    {
+      "block": 7,
+      "cell_trial_number": 7,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 54
+    },
+    {
+      "block": 7,
+      "cell_trial_number": 7,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 55
+    },
+    {
+      "block": 7,
+      "cell_trial_number": 7,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 56
+    },
+    {
+      "block": 8,
+      "cell_trial_number": 8,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 57
+    },
+    {
+      "block": 8,
+      "cell_trial_number": 8,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 58
+    },
+    {
+      "block": 8,
+      "cell_trial_number": 8,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 59
+    },
+    {
+      "block": 8,
+      "cell_trial_number": 8,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 60
+    },
+    {
+      "block": 8,
+      "cell_trial_number": 8,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 61
+    },
+    {
+      "block": 8,
+      "cell_trial_number": 8,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 62
+    },
+    {
+      "block": 8,
+      "cell_trial_number": 8,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 63
+    },
+    {
+      "block": 8,
+      "cell_trial_number": 8,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 64
+    },
+    {
+      "block": 9,
+      "cell_trial_number": 9,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 65
+    },
+    {
+      "block": 9,
+      "cell_trial_number": 9,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 66
+    },
+    {
+      "block": 9,
+      "cell_trial_number": 9,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 67
+    },
+    {
+      "block": 9,
+      "cell_trial_number": 9,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 68
+    },
+    {
+      "block": 9,
+      "cell_trial_number": 9,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 69
+    },
+    {
+      "block": 9,
+      "cell_trial_number": 9,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 70
+    },
+    {
+      "block": 9,
+      "cell_trial_number": 9,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 71
+    },
+    {
+      "block": 9,
+      "cell_trial_number": 9,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 72
+    },
+    {
+      "block": 10,
+      "cell_trial_number": 10,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 73
+    },
+    {
+      "block": 10,
+      "cell_trial_number": 10,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 74
+    },
+    {
+      "block": 10,
+      "cell_trial_number": 10,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 75
+    },
+    {
+      "block": 10,
+      "cell_trial_number": 10,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 76
+    },
+    {
+      "block": 10,
+      "cell_trial_number": 10,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 77
+    },
+    {
+      "block": 10,
+      "cell_trial_number": 10,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 78
+    },
+    {
+      "block": 10,
+      "cell_trial_number": 10,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 79
+    },
+    {
+      "block": 10,
+      "cell_trial_number": 10,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 80
+    },
+    {
+      "block": 11,
+      "cell_trial_number": 11,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 81
+    },
+    {
+      "block": 11,
+      "cell_trial_number": 11,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 82
+    },
+    {
+      "block": 11,
+      "cell_trial_number": 11,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 83
+    },
+    {
+      "block": 11,
+      "cell_trial_number": 11,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 84
+    },
+    {
+      "block": 11,
+      "cell_trial_number": 11,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 85
+    },
+    {
+      "block": 11,
+      "cell_trial_number": 11,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 86
+    },
+    {
+      "block": 11,
+      "cell_trial_number": 11,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 87
+    },
+    {
+      "block": 11,
+      "cell_trial_number": 11,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 88
+    },
+    {
+      "block": 12,
+      "cell_trial_number": 12,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 89
+    },
+    {
+      "block": 12,
+      "cell_trial_number": 12,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 90
+    },
+    {
+      "block": 12,
+      "cell_trial_number": 12,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 91
+    },
+    {
+      "block": 12,
+      "cell_trial_number": 12,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 92
+    },
+    {
+      "block": 12,
+      "cell_trial_number": 12,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 93
+    },
+    {
+      "block": 12,
+      "cell_trial_number": 12,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 94
+    },
+    {
+      "block": 12,
+      "cell_trial_number": 12,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 95
+    },
+    {
+      "block": 12,
+      "cell_trial_number": 12,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 96
+    },
+    {
+      "block": 13,
+      "cell_trial_number": 13,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 97
+    },
+    {
+      "block": 13,
+      "cell_trial_number": 13,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 98
+    },
+    {
+      "block": 13,
+      "cell_trial_number": 13,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 99
+    },
+    {
+      "block": 13,
+      "cell_trial_number": 13,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 100
+    },
+    {
+      "block": 13,
+      "cell_trial_number": 13,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 101
+    },
+    {
+      "block": 13,
+      "cell_trial_number": 13,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 102
+    },
+    {
+      "block": 13,
+      "cell_trial_number": 13,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 103
+    },
+    {
+      "block": 13,
+      "cell_trial_number": 13,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 104
+    },
+    {
+      "block": 14,
+      "cell_trial_number": 14,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 105
+    },
+    {
+      "block": 14,
+      "cell_trial_number": 14,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 106
+    },
+    {
+      "block": 14,
+      "cell_trial_number": 14,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 107
+    },
+    {
+      "block": 14,
+      "cell_trial_number": 14,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 108
+    },
+    {
+      "block": 14,
+      "cell_trial_number": 14,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 109
+    },
+    {
+      "block": 14,
+      "cell_trial_number": 14,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 110
+    },
+    {
+      "block": 14,
+      "cell_trial_number": 14,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 111
+    },
+    {
+      "block": 14,
+      "cell_trial_number": 14,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 112
+    },
+    {
+      "block": 15,
+      "cell_trial_number": 15,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 113
+    },
+    {
+      "block": 15,
+      "cell_trial_number": 15,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 114
+    },
+    {
+      "block": 15,
+      "cell_trial_number": 15,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 115
+    },
+    {
+      "block": 15,
+      "cell_trial_number": 15,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 116
+    },
+    {
+      "block": 15,
+      "cell_trial_number": 15,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 117
+    },
+    {
+      "block": 15,
+      "cell_trial_number": 15,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 118
+    },
+    {
+      "block": 15,
+      "cell_trial_number": 15,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 119
+    },
+    {
+      "block": 15,
+      "cell_trial_number": 15,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 120
+    },
+    {
+      "block": 16,
+      "cell_trial_number": 16,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 121
+    },
+    {
+      "block": 16,
+      "cell_trial_number": 16,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 122
+    },
+    {
+      "block": 16,
+      "cell_trial_number": 16,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 123
+    },
+    {
+      "block": 16,
+      "cell_trial_number": 16,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 124
+    },
+    {
+      "block": 16,
+      "cell_trial_number": 16,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 125
+    },
+    {
+      "block": 16,
+      "cell_trial_number": 16,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 126
+    },
+    {
+      "block": 16,
+      "cell_trial_number": 16,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 127
+    },
+    {
+      "block": 16,
+      "cell_trial_number": 16,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 128
+    },
+    {
+      "block": 17,
+      "cell_trial_number": 17,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 129
+    },
+    {
+      "block": 17,
+      "cell_trial_number": 17,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 130
+    },
+    {
+      "block": 17,
+      "cell_trial_number": 17,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 131
+    },
+    {
+      "block": 17,
+      "cell_trial_number": 17,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 132
+    },
+    {
+      "block": 17,
+      "cell_trial_number": 17,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 133
+    },
+    {
+      "block": 17,
+      "cell_trial_number": 17,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 134
+    },
+    {
+      "block": 17,
+      "cell_trial_number": 17,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 135
+    },
+    {
+      "block": 17,
+      "cell_trial_number": 17,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 136
+    },
+    {
+      "block": 18,
+      "cell_trial_number": 18,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 137
+    },
+    {
+      "block": 18,
+      "cell_trial_number": 18,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 138
+    },
+    {
+      "block": 18,
+      "cell_trial_number": 18,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 139
+    },
+    {
+      "block": 18,
+      "cell_trial_number": 18,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 140
+    },
+    {
+      "block": 18,
+      "cell_trial_number": 18,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 141
+    },
+    {
+      "block": 18,
+      "cell_trial_number": 18,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 142
+    },
+    {
+      "block": 18,
+      "cell_trial_number": 18,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 143
+    },
+    {
+      "block": 18,
+      "cell_trial_number": 18,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 144
+    },
+    {
+      "block": 19,
+      "cell_trial_number": 19,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 145
+    },
+    {
+      "block": 19,
+      "cell_trial_number": 19,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 146
+    },
+    {
+      "block": 19,
+      "cell_trial_number": 19,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 147
+    },
+    {
+      "block": 19,
+      "cell_trial_number": 19,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 148
+    },
+    {
+      "block": 19,
+      "cell_trial_number": 19,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 149
+    },
+    {
+      "block": 19,
+      "cell_trial_number": 19,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 150
+    },
+    {
+      "block": 19,
+      "cell_trial_number": 19,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 151
+    },
+    {
+      "block": 19,
+      "cell_trial_number": 19,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 152
+    },
+    {
+      "block": 20,
+      "cell_trial_number": 20,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 153
+    },
+    {
+      "block": 20,
+      "cell_trial_number": 20,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 154
+    },
+    {
+      "block": 20,
+      "cell_trial_number": 20,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 155
+    },
+    {
+      "block": 20,
+      "cell_trial_number": 20,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 156
+    },
+    {
+      "block": 20,
+      "cell_trial_number": 20,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 157
+    },
+    {
+      "block": 20,
+      "cell_trial_number": 20,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 158
+    },
+    {
+      "block": 20,
+      "cell_trial_number": 20,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 159
+    },
+    {
+      "block": 20,
+      "cell_trial_number": 20,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 160
+    },
+    {
+      "block": 21,
+      "cell_trial_number": 21,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 161
+    },
+    {
+      "block": 21,
+      "cell_trial_number": 21,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 162
+    },
+    {
+      "block": 21,
+      "cell_trial_number": 21,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 163
+    },
+    {
+      "block": 21,
+      "cell_trial_number": 21,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 164
+    },
+    {
+      "block": 21,
+      "cell_trial_number": 21,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 165
+    },
+    {
+      "block": 21,
+      "cell_trial_number": 21,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 166
+    },
+    {
+      "block": 21,
+      "cell_trial_number": 21,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 167
+    },
+    {
+      "block": 21,
+      "cell_trial_number": 21,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 168
+    },
+    {
+      "block": 22,
+      "cell_trial_number": 22,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 169
+    },
+    {
+      "block": 22,
+      "cell_trial_number": 22,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 170
+    },
+    {
+      "block": 22,
+      "cell_trial_number": 22,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 171
+    },
+    {
+      "block": 22,
+      "cell_trial_number": 22,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 172
+    },
+    {
+      "block": 22,
+      "cell_trial_number": 22,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 173
+    },
+    {
+      "block": 22,
+      "cell_trial_number": 22,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 174
+    },
+    {
+      "block": 22,
+      "cell_trial_number": 22,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 175
+    },
+    {
+      "block": 22,
+      "cell_trial_number": 22,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 176
+    },
+    {
+      "block": 23,
+      "cell_trial_number": 23,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 177
+    },
+    {
+      "block": 23,
+      "cell_trial_number": 23,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 178
+    },
+    {
+      "block": 23,
+      "cell_trial_number": 23,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 179
+    },
+    {
+      "block": 23,
+      "cell_trial_number": 23,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 180
+    },
+    {
+      "block": 23,
+      "cell_trial_number": 23,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 181
+    },
+    {
+      "block": 23,
+      "cell_trial_number": 23,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 182
+    },
+    {
+      "block": 23,
+      "cell_trial_number": 23,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 183
+    },
+    {
+      "block": 23,
+      "cell_trial_number": 23,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 184
+    },
+    {
+      "block": 24,
+      "cell_trial_number": 24,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 185
+    },
+    {
+      "block": 24,
+      "cell_trial_number": 24,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 186
+    },
+    {
+      "block": 24,
+      "cell_trial_number": 24,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 187
+    },
+    {
+      "block": 24,
+      "cell_trial_number": 24,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 188
+    },
+    {
+      "block": 24,
+      "cell_trial_number": 24,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 189
+    },
+    {
+      "block": 24,
+      "cell_trial_number": 24,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 190
+    },
+    {
+      "block": 24,
+      "cell_trial_number": 24,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 191
+    },
+    {
+      "block": 24,
+      "cell_trial_number": 24,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 192
+    },
+    {
+      "block": 25,
+      "cell_trial_number": 25,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 193
+    },
+    {
+      "block": 25,
+      "cell_trial_number": 25,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 194
+    },
+    {
+      "block": 25,
+      "cell_trial_number": 25,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 195
+    },
+    {
+      "block": 25,
+      "cell_trial_number": 25,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 196
+    },
+    {
+      "block": 25,
+      "cell_trial_number": 25,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 197
+    },
+    {
+      "block": 25,
+      "cell_trial_number": 25,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 198
+    },
+    {
+      "block": 25,
+      "cell_trial_number": 25,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 199
+    },
+    {
+      "block": 25,
+      "cell_trial_number": 25,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 200
+    },
+    {
+      "block": 26,
+      "cell_trial_number": 26,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 201
+    },
+    {
+      "block": 26,
+      "cell_trial_number": 26,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 202
+    },
+    {
+      "block": 26,
+      "cell_trial_number": 26,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 203
+    },
+    {
+      "block": 26,
+      "cell_trial_number": 26,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 204
+    },
+    {
+      "block": 26,
+      "cell_trial_number": 26,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 205
+    },
+    {
+      "block": 26,
+      "cell_trial_number": 26,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 206
+    },
+    {
+      "block": 26,
+      "cell_trial_number": 26,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 207
+    },
+    {
+      "block": 26,
+      "cell_trial_number": 26,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 208
+    },
+    {
+      "block": 27,
+      "cell_trial_number": 27,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 209
+    },
+    {
+      "block": 27,
+      "cell_trial_number": 27,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 210
+    },
+    {
+      "block": 27,
+      "cell_trial_number": 27,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 211
+    },
+    {
+      "block": 27,
+      "cell_trial_number": 27,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 212
+    },
+    {
+      "block": 27,
+      "cell_trial_number": 27,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 213
+    },
+    {
+      "block": 27,
+      "cell_trial_number": 27,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 214
+    },
+    {
+      "block": 27,
+      "cell_trial_number": 27,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 215
+    },
+    {
+      "block": 27,
+      "cell_trial_number": 27,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 216
+    },
+    {
+      "block": 28,
+      "cell_trial_number": 28,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 217
+    },
+    {
+      "block": 28,
+      "cell_trial_number": 28,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 218
+    },
+    {
+      "block": 28,
+      "cell_trial_number": 28,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 219
+    },
+    {
+      "block": 28,
+      "cell_trial_number": 28,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 220
+    },
+    {
+      "block": 28,
+      "cell_trial_number": 28,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 221
+    },
+    {
+      "block": 28,
+      "cell_trial_number": 28,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 222
+    },
+    {
+      "block": 28,
+      "cell_trial_number": 28,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 223
+    },
+    {
+      "block": 28,
+      "cell_trial_number": 28,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 224
+    },
+    {
+      "block": 29,
+      "cell_trial_number": 29,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 225
+    },
+    {
+      "block": 29,
+      "cell_trial_number": 29,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 226
+    },
+    {
+      "block": 29,
+      "cell_trial_number": 29,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 227
+    },
+    {
+      "block": 29,
+      "cell_trial_number": 29,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 228
+    },
+    {
+      "block": 29,
+      "cell_trial_number": 29,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 229
+    },
+    {
+      "block": 29,
+      "cell_trial_number": 29,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 230
+    },
+    {
+      "block": 29,
+      "cell_trial_number": 29,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 231
+    },
+    {
+      "block": 29,
+      "cell_trial_number": 29,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 232
+    },
+    {
+      "block": 30,
+      "cell_trial_number": 30,
+      "fault": "commit_then_disconnect",
+      "policy": "neutral",
+      "trial_number": 233
+    },
+    {
+      "block": 30,
+      "cell_trial_number": 30,
+      "fault": "commit_then_disconnect",
+      "policy": "controlled",
+      "trial_number": 234
+    },
+    {
+      "block": 30,
+      "cell_trial_number": 30,
+      "fault": "commit_then_disconnect",
+      "policy": "do-not-retry",
+      "trial_number": 235
+    },
+    {
+      "block": 30,
+      "cell_trial_number": 30,
+      "fault": "disconnect_before_effect",
+      "policy": "controlled",
+      "trial_number": 236
+    },
+    {
+      "block": 30,
+      "cell_trial_number": 30,
+      "fault": "disconnect_before_effect",
+      "policy": "do-not-retry",
+      "trial_number": 237
+    },
+    {
+      "block": 30,
+      "cell_trial_number": 30,
+      "fault": "commit_then_disconnect",
+      "policy": "state-aware",
+      "trial_number": 238
+    },
+    {
+      "block": 30,
+      "cell_trial_number": 30,
+      "fault": "disconnect_before_effect",
+      "policy": "state-aware",
+      "trial_number": 239
+    },
+    {
+      "block": 30,
+      "cell_trial_number": 30,
+      "fault": "disconnect_before_effect",
+      "policy": "neutral",
+      "trial_number": 240
+    }
+  ]
+}

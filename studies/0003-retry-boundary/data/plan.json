@@ -1,0 +1,30 @@
+{
+  "agent_visible_failure": "No tool result reached the caller. The operation outcome is unknown.",
+  "design": "2 fault positions x 4 recovery policies",
+  "faults": [
+    "disconnect_before_effect",
+    "commit_then_disconnect"
+  ],
+  "fresh_database_per_trial": true,
+  "max_model_turns": 8,
+  "model_requested": "gpt-5.6-luna",
+  "openai_sdk_retries": 0,
+  "order_sha256": "d4ed559acb8b77cbec4ee4ddab8fb2cac10e9784947e42d11ec91cf2621e6917",
+  "parallel_tool_calls": false,
+  "policies": [
+    "controlled",
+    "neutral",
+    "do-not-retry",
+    "state-aware"
+  ],
+  "primary_outcome": "exactly_once",
+  "read_timeout_seconds": 10.0,
+  "reasoning_effort_requested": "medium",
+  "requested_refund_cents": 20000,
+  "runs_per_cell": 30,
+  "seed": 20260911,
+  "service_tier_requested": "default",
+  "study_id": "0003-retry-boundary",
+  "temperature_requested": 1.0,
+  "total_planned_trials": 240
+}
