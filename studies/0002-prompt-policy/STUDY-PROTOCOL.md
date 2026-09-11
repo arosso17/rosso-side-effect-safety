@@ -83,6 +83,18 @@ order and its canonical JSON SHA-256 digest are in `data/order.json`.
 Two smoke trials per arm were used to validate the apparatus and excluded from
 the 90 confirmatory records.
 
+## Disclosed expectation
+
+The recorded expectation was that neutral would usually reconcile with
+`get_order` but might sometimes repeat the refund. The do-not-retry arm was
+expected to reduce duplicates relative to explicit retry while sometimes
+producing inaccurate or overly uncertain reports.
+
+Neutral never repeated the refund, and do-not-retry neither improved on neutral
+nor produced uncertain reports. Those parts of the expectation were wrong.
+There is no public pre-execution timestamp for this expectation, so it is
+included as author disclosure rather than evidence of preregistration.
+
 ## Outcomes
 
 The primary outcome was `duplicate_effect`: whether authoritative SQLite state

@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 from collections import Counter
+from decimal import Decimal
 from pathlib import Path
 from typing import Any
 
@@ -50,7 +51,7 @@ def canonical_order_digest(order: list[dict[str, Any]]) -> str:
 def verify_checksums() -> None:
     for line in (ROOT / "SHA256SUMS").read_text(encoding="utf-8").splitlines():
         expected, relative_path = line.split("  ", maxsplit=1)
-        content = (ROOT / relative_path).read_bytes().replace(b"\r\n", b"\n")
+        content = (ROOT / relative_path).read_bytes()
         actual = hashlib.sha256(content).hexdigest()
         require(actual == expected, f"checksum mismatch: {relative_path}")
 
@@ -107,6 +108,14 @@ def verify() -> dict[str, Any]:
             "observed service tier mismatch",
         )
         require(recorded["model_turns"] == 4, "expected four model turns")
+        require(
+            isinstance(recorded["estimated_cost_usd"], str),
+            "estimated cost must be a decimal string",
+        )
+        require(
+            recorded["final_report_classification"] == "unreviewed",
+            "runner classification must remain unreviewed",
+        )
         controlled = recorded["policy"] == "controlled"
         require(recorded["duplicate_effect"] is controlled, "duplicate mismatch")
         require(recorded["effect_count"] == (2 if controlled else 1), "effect mismatch")
@@ -157,6 +166,11 @@ def verify() -> dict[str, Any]:
         }
 
     require(summary["completed_trials"] == 90, "summary trial count mismatch")
+    total_cost = sum(Decimal(trial["estimated_cost_usd"]) for trial in trials)
+    require(
+        f"{total_cost:.6f}" == summary["total_estimated_cost_usd"],
+        "estimated cost total mismatch",
+    )
     expected_coding = {
         "controlled": {"false_completion": 30},
         "neutral": {"accurate_completion": 30},
@@ -192,6 +206,7 @@ def verify() -> dict[str, Any]:
     return {
         "order_sha256": digest,
         "counts": counts,
+        "estimated_cost_usd": f"{total_cost:.6f}",
         "one_sided_95_upper_bound_for_zero_of_30": 1 - 0.05 ** (1 / 30),
     }
 

@@ -44,8 +44,15 @@ python studies/0002-prompt-policy/verify_results.py
 
 It recomputes the order digest, validates all 90 trial records, checks the
 authoritative effect outcomes and tool paths, verifies the final-answer coding,
-and prints the aggregate counts. Checksums use LF-normalized content so the
-verification is stable across Git checkouts on Windows, macOS, and Linux.
+and prints the aggregate counts and cost total.
+
+`SHA256SUMS` pins the exact file bytes. The repository's `.gitattributes`
+enforces LF line endings across platforms, so conventional checksum tools also
+work. From the study directory:
+
+```bash
+sha256sum -c SHA256SUMS
+```
 
 ## Evidence boundary
 
@@ -57,3 +64,10 @@ Raw provider response IDs, local databases, and internal project files are not
 included. `trials.jsonl` retains the model controls, ordered tool outcomes,
 authoritative effect counts, final user-facing text, token usage, and estimated
 cost for every valid trial.
+
+`estimated_cost_usd` is a fixed-precision decimal string, not a mixture of JSON
+types. Parse it with `decimal.Decimal` when aggregating. The runner left
+`final_report_classification` as `unreviewed` because it did not make
+interpretive labels during execution. The canonical post-run human audit is
+`data/final-report-coding.json`, and the verifier cross-checks that audit against
+every recorded final text.
