@@ -107,6 +107,21 @@ def verify() -> dict[str, Any]:
             "observed service tier mismatch",
         )
         require(recorded["model_turns"] == 4, "expected four model turns")
+        controlled = recorded["policy"] == "controlled"
+        require(recorded["duplicate_effect"] is controlled, "duplicate mismatch")
+        require(recorded["effect_count"] == (2 if controlled else 1), "effect mismatch")
+        require(
+            recorded["effect_total_cents"] == (40_000 if controlled else 20_000),
+            "effect total mismatch",
+        )
+        require(
+            recorded["model_repeated_refund"] is controlled,
+            "model repeat mismatch",
+        )
+        require(
+            recorded["retry_origin"] == ("MODEL" if controlled else None),
+            "retry origin mismatch",
+        )
         sequence = tuple(
             (attempt["tool"], attempt["outcome"])
             for attempt in recorded["tool_attempts"]
@@ -148,6 +163,24 @@ def verify() -> dict[str, Any]:
         "do-not-retry": {"accurate_completion": 30},
     }
     require(coding["counts_by_policy"] == expected_coding, "coding counts mismatch")
+    trial_text_counts = Counter(
+        (trial["policy"], trial["final_text"]) for trial in trials
+    )
+    coded_text_counts: Counter[tuple[str, str]] = Counter()
+    coded_classifications: dict[str, Counter[str]] = {
+        policy: Counter() for policy in POLICIES
+    }
+    for item in coding["distinct_texts"]:
+        require(item["policy"] in POLICIES, "unknown policy in coding audit")
+        require(item["count"] > 0, "coding count must be positive")
+        coded_text_counts[(item["policy"], item["text"])] += item["count"]
+        coded_classifications[item["policy"]][item["classification"]] += item["count"]
+    require(coded_text_counts == trial_text_counts, "coding text coverage mismatch")
+    require(
+        {policy: dict(counts) for policy, counts in coded_classifications.items()}
+        == expected_coding,
+        "recomputed coding counts mismatch",
+    )
     for policy in POLICIES:
         audited = intermediate["counts_by_policy"][policy]
         require(audited["trials"] == 30, "intermediate audit trial mismatch")
