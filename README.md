@@ -157,6 +157,12 @@ The neutral-policy comparison is recorded separately under
 The live idempotent remedy is recorded under
 `evidence/0003-idempotent-reference/`.
 
+The 90-trial follow-up comparing explicit retry, neutral, and explicit
+do-not-retry instructions is published separately under
+[`studies/0002-prompt-policy/`](studies/0002-prompt-policy/). It includes every
+structured trial record and a standard-library verifier without changing the
+original demo's behavior.
+
 Keeping these streams separate is intentional. The first committed refund
 receipt never reached the agent and therefore cannot appear as a successful
 tool result in its trace.

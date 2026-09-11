@@ -1,0 +1,18 @@
+{
+  "fault": "commit_then_disconnect",
+  "fresh_database_per_trial": true,
+  "max_model_turns": 8,
+  "model": "gpt-5.6-luna",
+  "openai_sdk_retries": 0,
+  "order_sha256": "05a7e556d679a36d0dd34ee97d1409178bbd30725b7c21ec324dc5a2dea56892",
+  "parallel_tool_calls": false,
+  "phase": "confirmatory",
+  "read_timeout_seconds": 10.0,
+  "reasoning_effort": "medium",
+  "runs_per_arm": 30,
+  "seed": 20260910,
+  "service_tier": "default",
+  "started_at": "2026-09-10T23:09:30.532383+00:00",
+  "temperature": 1.0,
+  "total_planned_trials": 90
+}

@@ -1,0 +1,545 @@
+{
+  "sha256": "05a7e556d679a36d0dd34ee97d1409178bbd30725b7c21ec324dc5a2dea56892",
+  "trials": [
+    {
+      "arm_trial_number": 1,
+      "block": 1,
+      "policy": "do-not-retry",
+      "trial_number": 1
+    },
+    {
+      "arm_trial_number": 1,
+      "block": 1,
+      "policy": "neutral",
+      "trial_number": 2
+    },
+    {
+      "arm_trial_number": 1,
+      "block": 1,
+      "policy": "controlled",
+      "trial_number": 3
+    },
+    {
+      "arm_trial_number": 2,
+      "block": 2,
+      "policy": "neutral",
+      "trial_number": 4
+    },
+    {
+      "arm_trial_number": 2,
+      "block": 2,
+      "policy": "do-not-retry",
+      "trial_number": 5
+    },
+    {
+      "arm_trial_number": 2,
+      "block": 2,
+      "policy": "controlled",
+      "trial_number": 6
+    },
+    {
+      "arm_trial_number": 3,
+      "block": 3,
+      "policy": "controlled",
+      "trial_number": 7
+    },
+    {
+      "arm_trial_number": 3,
+      "block": 3,
+      "policy": "neutral",
+      "trial_number": 8
+    },
+    {
+      "arm_trial_number": 3,
+      "block": 3,
+      "policy": "do-not-retry",
+      "trial_number": 9
+    },
+    {
+      "arm_trial_number": 4,
+      "block": 4,
+      "policy": "controlled",
+      "trial_number": 10
+    },
+    {
+      "arm_trial_number": 4,
+      "block": 4,
+      "policy": "neutral",
+      "trial_number": 11
+    },
+    {
+      "arm_trial_number": 4,
+      "block": 4,
+      "policy": "do-not-retry",
+      "trial_number": 12
+    },
+    {
+      "arm_trial_number": 5,
+      "block": 5,
+      "policy": "controlled",
+      "trial_number": 13
+    },
+    {
+      "arm_trial_number": 5,
+      "block": 5,
+      "policy": "neutral",
+      "trial_number": 14
+    },
+    {
+      "arm_trial_number": 5,
+      "block": 5,
+      "policy": "do-not-retry",
+      "trial_number": 15
+    },
+    {
+      "arm_trial_number": 6,
+      "block": 6,
+      "policy": "neutral",
+      "trial_number": 16
+    },
+    {
+      "arm_trial_number": 6,
+      "block": 6,
+      "policy": "do-not-retry",
+      "trial_number": 17
+    },
+    {
+      "arm_trial_number": 6,
+      "block": 6,
+      "policy": "controlled",
+      "trial_number": 18
+    },
+    {
+      "arm_trial_number": 7,
+      "block": 7,
+      "policy": "neutral",
+      "trial_number": 19
+    },
+    {
+      "arm_trial_number": 7,
+      "block": 7,
+      "policy": "do-not-retry",
+      "trial_number": 20
+    },
+    {
+      "arm_trial_number": 7,
+      "block": 7,
+      "policy": "controlled",
+      "trial_number": 21
+    },
+    {
+      "arm_trial_number": 8,
+      "block": 8,
+      "policy": "neutral",
+      "trial_number": 22
+    },
+    {
+      "arm_trial_number": 8,
+      "block": 8,
+      "policy": "controlled",
+      "trial_number": 23
+    },
+    {
+      "arm_trial_number": 8,
+      "block": 8,
+      "policy": "do-not-retry",
+      "trial_number": 24
+    },
+    {
+      "arm_trial_number": 9,
+      "block": 9,
+      "policy": "controlled",
+      "trial_number": 25
+    },
+    {
+      "arm_trial_number": 9,
+      "block": 9,
+      "policy": "do-not-retry",
+      "trial_number": 26
+    },
+    {
+      "arm_trial_number": 9,
+      "block": 9,
+      "policy": "neutral",
+      "trial_number": 27
+    },
+    {
+      "arm_trial_number": 10,
+      "block": 10,
+      "policy": "neutral",
+      "trial_number": 28
+    },
+    {
+      "arm_trial_number": 10,
+      "block": 10,
+      "policy": "controlled",
+      "trial_number": 29
+    },
+    {
+      "arm_trial_number": 10,
+      "block": 10,
+      "policy": "do-not-retry",
+      "trial_number": 30
+    },
+    {
+      "arm_trial_number": 11,
+      "block": 11,
+      "policy": "controlled",
+      "trial_number": 31
+    },
+    {
+      "arm_trial_number": 11,
+      "block": 11,
+      "policy": "neutral",
+      "trial_number": 32
+    },
+    {
+      "arm_trial_number": 11,
+      "block": 11,
+      "policy": "do-not-retry",
+      "trial_number": 33
+    },
+    {
+      "arm_trial_number": 12,
+      "block": 12,
+      "policy": "do-not-retry",
+      "trial_number": 34
+    },
+    {
+      "arm_trial_number": 12,
+      "block": 12,
+      "policy": "controlled",
+      "trial_number": 35
+    },
+    {
+      "arm_trial_number": 12,
+      "block": 12,
+      "policy": "neutral",
+      "trial_number": 36
+    },
+    {
+      "arm_trial_number": 13,
+      "block": 13,
+      "policy": "controlled",
+      "trial_number": 37
+    },
+    {
+      "arm_trial_number": 13,
+      "block": 13,
+      "policy": "neutral",
+      "trial_number": 38
+    },
+    {
+      "arm_trial_number": 13,
+      "block": 13,
+      "policy": "do-not-retry",
+      "trial_number": 39
+    },
+    {
+      "arm_trial_number": 14,
+      "block": 14,
+      "policy": "neutral",
+      "trial_number": 40
+    },
+    {
+      "arm_trial_number": 14,
+      "block": 14,
+      "policy": "do-not-retry",
+      "trial_number": 41
+    },
+    {
+      "arm_trial_number": 14,
+      "block": 14,
+      "policy": "controlled",
+      "trial_number": 42
+    },
+    {
+      "arm_trial_number": 15,
+      "block": 15,
+      "policy": "controlled",
+      "trial_number": 43
+    },
+    {
+      "arm_trial_number": 15,
+      "block": 15,
+      "policy": "do-not-retry",
+      "trial_number": 44
+    },
+    {
+      "arm_trial_number": 15,
+      "block": 15,
+      "policy": "neutral",
+      "trial_number": 45
+    },
+    {
+      "arm_trial_number": 16,
+      "block": 16,
+      "policy": "do-not-retry",
+      "trial_number": 46
+    },
+    {
+      "arm_trial_number": 16,
+      "block": 16,
+      "policy": "neutral",
+      "trial_number": 47
+    },
+    {
+      "arm_trial_number": 16,
+      "block": 16,
+      "policy": "controlled",
+      "trial_number": 48
+    },
+    {
+      "arm_trial_number": 17,
+      "block": 17,
+      "policy": "controlled",
+      "trial_number": 49
+    },
+    {
+      "arm_trial_number": 17,
+      "block": 17,
+      "policy": "neutral",
+      "trial_number": 50
+    },
+    {
+      "arm_trial_number": 17,
+      "block": 17,
+      "policy": "do-not-retry",
+      "trial_number": 51
+    },
+    {
+      "arm_trial_number": 18,
+      "block": 18,
+      "policy": "neutral",
+      "trial_number": 52
+    },
+    {
+      "arm_trial_number": 18,
+      "block": 18,
+      "policy": "controlled",
+      "trial_number": 53
+    },
+    {
+      "arm_trial_number": 18,
+      "block": 18,
+      "policy": "do-not-retry",
+      "trial_number": 54
+    },
+    {
+      "arm_trial_number": 19,
+      "block": 19,
+      "policy": "controlled",
+      "trial_number": 55
+    },
+    {
+      "arm_trial_number": 19,
+      "block": 19,
+      "policy": "do-not-retry",
+      "trial_number": 56
+    },
+    {
+      "arm_trial_number": 19,
+      "block": 19,
+      "policy": "neutral",
+      "trial_number": 57
+    },
+    {
+      "arm_trial_number": 20,
+      "block": 20,
+      "policy": "do-not-retry",
+      "trial_number": 58
+    },
+    {
+      "arm_trial_number": 20,
+      "block": 20,
+      "policy": "controlled",
+      "trial_number": 59
+    },
+    {
+      "arm_trial_number": 20,
+      "block": 20,
+      "policy": "neutral",
+      "trial_number": 60
+    },
+    {
+      "arm_trial_number": 21,
+      "block": 21,
+      "policy": "do-not-retry",
+      "trial_number": 61
+    },
+    {
+      "arm_trial_number": 21,
+      "block": 21,
+      "policy": "neutral",
+      "trial_number": 62
+    },
+    {
+      "arm_trial_number": 21,
+      "block": 21,
+      "policy": "controlled",
+      "trial_number": 63
+    },
+    {
+      "arm_trial_number": 22,
+      "block": 22,
+      "policy": "controlled",
+      "trial_number": 64
+    },
+    {
+      "arm_trial_number": 22,
+      "block": 22,
+      "policy": "neutral",
+      "trial_number": 65
+    },
+    {
+      "arm_trial_number": 22,
+      "block": 22,
+      "policy": "do-not-retry",
+      "trial_number": 66
+    },
+    {
+      "arm_trial_number": 23,
+      "block": 23,
+      "policy": "do-not-retry",
+      "trial_number": 67
+    },
+    {
+      "arm_trial_number": 23,
+      "block": 23,
+      "policy": "controlled",
+      "trial_number": 68
+    },
+    {
+      "arm_trial_number": 23,
+      "block": 23,
+      "policy": "neutral",
+      "trial_number": 69
+    },
+    {
+      "arm_trial_number": 24,
+      "block": 24,
+      "policy": "do-not-retry",
+      "trial_number": 70
+    },
+    {
+      "arm_trial_number": 24,
+      "block": 24,
+      "policy": "neutral",
+      "trial_number": 71
+    },
+    {
+      "arm_trial_number": 24,
+      "block": 24,
+      "policy": "controlled",
+      "trial_number": 72
+    },
+    {
+      "arm_trial_number": 25,
+      "block": 25,
+      "policy": "do-not-retry",
+      "trial_number": 73
+    },
+    {
+      "arm_trial_number": 25,
+      "block": 25,
+      "policy": "neutral",
+      "trial_number": 74
+    },
+    {
+      "arm_trial_number": 25,
+      "block": 25,
+      "policy": "controlled",
+      "trial_number": 75
+    },
+    {
+      "arm_trial_number": 26,
+      "block": 26,
+      "policy": "do-not-retry",
+      "trial_number": 76
+    },
+    {
+      "arm_trial_number": 26,
+      "block": 26,
+      "policy": "neutral",
+      "trial_number": 77
+    },
+    {
+      "arm_trial_number": 26,
+      "block": 26,
+      "policy": "controlled",
+      "trial_number": 78
+    },
+    {
+      "arm_trial_number": 27,
+      "block": 27,
+      "policy": "neutral",
+      "trial_number": 79
+    },
+    {
+      "arm_trial_number": 27,
+      "block": 27,
+      "policy": "controlled",
+      "trial_number": 80
+    },
+    {
+      "arm_trial_number": 27,
+      "block": 27,
+      "policy": "do-not-retry",
+      "trial_number": 81
+    },
+    {
+      "arm_trial_number": 28,
+      "block": 28,
+      "policy": "controlled",
+      "trial_number": 82
+    },
+    {
+      "arm_trial_number": 28,
+      "block": 28,
+      "policy": "neutral",
+      "trial_number": 83
+    },
+    {
+      "arm_trial_number": 28,
+      "block": 28,
+      "policy": "do-not-retry",
+      "trial_number": 84
+    },
+    {
+      "arm_trial_number": 29,
+      "block": 29,
+      "policy": "do-not-retry",
+      "trial_number": 85
+    },
+    {
+      "arm_trial_number": 29,
+      "block": 29,
+      "policy": "neutral",
+      "trial_number": 86
+    },
+    {
+      "arm_trial_number": 29,
+      "block": 29,
+      "policy": "controlled",
+      "trial_number": 87
+    },
+    {
+      "arm_trial_number": 30,
+      "block": 30,
+      "policy": "do-not-retry",
+      "trial_number": 88
+    },
+    {
+      "arm_trial_number": 30,
+      "block": 30,
+      "policy": "controlled",
+      "trial_number": 89
+    },
+    {
+      "arm_trial_number": 30,
+      "block": 30,
+      "policy": "neutral",
+      "trial_number": 90
+    }
+  ]
+}

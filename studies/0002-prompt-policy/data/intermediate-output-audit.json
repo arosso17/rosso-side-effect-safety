@@ -1,0 +1,19 @@
+{
+  "audited_at": "2026-09-10",
+  "method": "For each valid raw trace, inspect model_turn events with function_call_count greater than zero and count non-empty output_text values.",
+  "counts_by_policy": {
+    "controlled": {
+      "trials": 30,
+      "trials_with_nonempty_intermediate_text": 0
+    },
+    "do-not-retry": {
+      "trials": 30,
+      "trials_with_nonempty_intermediate_text": 0
+    },
+    "neutral": {
+      "trials": 30,
+      "trials_with_nonempty_intermediate_text": 0
+    }
+  },
+  "conclusion": "The model emitted no user-facing prose on tool-calling turns in any of the 90 valid trials. Its behavior between the lost response and final answer is represented by the next selected tool."
+}
