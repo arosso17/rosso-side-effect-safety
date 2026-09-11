@@ -90,10 +90,12 @@ The recorded expectation was that neutral would usually reconcile with
 expected to reduce duplicates relative to explicit retry while sometimes
 producing inaccurate or overly uncertain reports.
 
-Neutral never repeated the refund, and do-not-retry neither improved on neutral
-nor produced uncertain reports. Those parts of the expectation were wrong.
-There is no public pre-execution timestamp for this expectation, so it is
-included as author disclosure rather than evidence of preregistration.
+Neutral never repeated the refund. Do-not-retry did reduce duplicates relative
+to explicit retry, but it could not improve on neutral and produced no
+uncertain reports. The expected occasional neutral failures and reporting
+problems did not appear. There is no public pre-execution timestamp for this
+expectation, so it is included as author disclosure rather than evidence of
+preregistration.
 
 ## Outcomes
 
