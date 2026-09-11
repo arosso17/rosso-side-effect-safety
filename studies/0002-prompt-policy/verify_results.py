@@ -50,7 +50,8 @@ def canonical_order_digest(order: list[dict[str, Any]]) -> str:
 def verify_checksums() -> None:
     for line in (ROOT / "SHA256SUMS").read_text(encoding="utf-8").splitlines():
         expected, relative_path = line.split("  ", maxsplit=1)
-        actual = hashlib.sha256((ROOT / relative_path).read_bytes()).hexdigest()
+        content = (ROOT / relative_path).read_bytes().replace(b"\r\n", b"\n")
+        actual = hashlib.sha256(content).hexdigest()
         require(actual == expected, f"checksum mismatch: {relative_path}")
 
 

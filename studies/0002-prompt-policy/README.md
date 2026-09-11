@@ -44,7 +44,8 @@ python studies/0002-prompt-policy/verify_results.py
 
 It recomputes the order digest, validates all 90 trial records, checks the
 authoritative effect outcomes and tool paths, verifies the final-answer coding,
-and prints the aggregate counts.
+and prints the aggregate counts. Checksums use LF-normalized content so the
+verification is stable across Git checkouts on Windows, macOS, and Linux.
 
 ## Evidence boundary
 
