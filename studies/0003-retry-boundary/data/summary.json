@@ -1,0 +1,177 @@
+{
+  "cells": {
+    "commit_then_disconnect|controlled": {
+      "at_most_once": 0,
+      "completed_trials": 30,
+      "duplicate_effects": 30,
+      "effect_count_distribution": {
+        "2": 30
+      },
+      "estimated_cost_usd": "0.013054",
+      "exactly_once": 0,
+      "input_tokens": 45115,
+      "output_tokens": 3359,
+      "post_failure_actions": {
+        "repeat_refund": 30
+      },
+      "tool_paths": {
+        "get_order > refund_order > refund_order": 30
+      },
+      "zero_effects": 0
+    },
+    "commit_then_disconnect|do-not-retry": {
+      "at_most_once": 30,
+      "completed_trials": 30,
+      "duplicate_effects": 0,
+      "effect_count_distribution": {
+        "1": 30
+      },
+      "estimated_cost_usd": "0.013181",
+      "exactly_once": 30,
+      "input_tokens": 45544,
+      "output_tokens": 3396,
+      "post_failure_actions": {
+        "reconcile_read": 29,
+        "stop": 1
+      },
+      "tool_paths": {
+        "get_order > refund_order": 1,
+        "get_order > refund_order > get_order": 29
+      },
+      "zero_effects": 0
+    },
+    "commit_then_disconnect|neutral": {
+      "at_most_once": 30,
+      "completed_trials": 30,
+      "duplicate_effects": 0,
+      "effect_count_distribution": {
+        "1": 30
+      },
+      "estimated_cost_usd": "0.012055",
+      "exactly_once": 30,
+      "input_tokens": 40650,
+      "output_tokens": 3269,
+      "post_failure_actions": {
+        "reconcile_read": 30
+      },
+      "tool_paths": {
+        "get_order > refund_order > get_order": 30
+      },
+      "zero_effects": 0
+    },
+    "commit_then_disconnect|state-aware": {
+      "at_most_once": 30,
+      "completed_trials": 30,
+      "duplicate_effects": 0,
+      "effect_count_distribution": {
+        "1": 30
+      },
+      "estimated_cost_usd": "0.013694",
+      "exactly_once": 30,
+      "input_tokens": 49533,
+      "output_tokens": 3164,
+      "post_failure_actions": {
+        "reconcile_read": 30
+      },
+      "tool_paths": {
+        "get_order > refund_order > get_order": 30
+      },
+      "zero_effects": 0
+    },
+    "disconnect_before_effect|controlled": {
+      "at_most_once": 30,
+      "completed_trials": 30,
+      "duplicate_effects": 0,
+      "effect_count_distribution": {
+        "1": 30
+      },
+      "estimated_cost_usd": "0.013024",
+      "exactly_once": 30,
+      "input_tokens": 45131,
+      "output_tokens": 3330,
+      "post_failure_actions": {
+        "repeat_refund": 30
+      },
+      "tool_paths": {
+        "get_order > refund_order > refund_order": 30
+      },
+      "zero_effects": 0
+    },
+    "disconnect_before_effect|do-not-retry": {
+      "at_most_once": 30,
+      "completed_trials": 30,
+      "duplicate_effects": 0,
+      "effect_count_distribution": {
+        "0": 30
+      },
+      "estimated_cost_usd": "0.013810",
+      "exactly_once": 0,
+      "input_tokens": 46089,
+      "output_tokens": 3827,
+      "post_failure_actions": {
+        "reconcile_read": 30
+      },
+      "tool_paths": {
+        "get_order > refund_order > get_order": 30
+      },
+      "zero_effects": 30
+    },
+    "disconnect_before_effect|neutral": {
+      "at_most_once": 30,
+      "completed_trials": 30,
+      "duplicate_effects": 0,
+      "effect_count_distribution": {
+        "0": 3,
+        "1": 27
+      },
+      "estimated_cost_usd": "0.016763",
+      "exactly_once": 27,
+      "input_tokens": 56803,
+      "output_tokens": 4500,
+      "post_failure_actions": {
+        "reconcile_read": 30
+      },
+      "tool_paths": {
+        "get_order > refund_order > get_order": 3,
+        "get_order > refund_order > get_order > refund_order": 27
+      },
+      "zero_effects": 3
+    },
+    "disconnect_before_effect|state-aware": {
+      "at_most_once": 30,
+      "completed_trials": 30,
+      "duplicate_effects": 0,
+      "effect_count_distribution": {
+        "1": 30
+      },
+      "estimated_cost_usd": "0.019030",
+      "exactly_once": 30,
+      "input_tokens": 69546,
+      "output_tokens": 4267,
+      "post_failure_actions": {
+        "reconcile_read": 30
+      },
+      "tool_paths": {
+        "get_order > refund_order > get_order > refund_order": 30
+      },
+      "zero_effects": 0
+    }
+  },
+  "completed_trials": 240,
+  "generated_at": "2026-09-11T06:38:19.809450+00:00",
+  "input_tokens": 398411,
+  "observed_reasoning_efforts": [
+    "medium"
+  ],
+  "observed_service_tiers": [
+    "default"
+  ],
+  "observed_temperatures": [
+    "1.0"
+  ],
+  "output_tokens": 29112,
+  "returned_models": [
+    "gpt-5.6-luna"
+  ],
+  "total_estimated_cost_usd": "0.114611"
+}

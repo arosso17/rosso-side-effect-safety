@@ -1,0 +1,37 @@
+{
+  "counts_by_cell": {
+    "commit_then_disconnect|controlled": {
+      "trials": 30,
+      "trials_with_nonempty_intermediate_text": 0
+    },
+    "commit_then_disconnect|do-not-retry": {
+      "trials": 30,
+      "trials_with_nonempty_intermediate_text": 0
+    },
+    "commit_then_disconnect|neutral": {
+      "trials": 30,
+      "trials_with_nonempty_intermediate_text": 0
+    },
+    "commit_then_disconnect|state-aware": {
+      "trials": 30,
+      "trials_with_nonempty_intermediate_text": 0
+    },
+    "disconnect_before_effect|controlled": {
+      "trials": 30,
+      "trials_with_nonempty_intermediate_text": 0
+    },
+    "disconnect_before_effect|do-not-retry": {
+      "trials": 30,
+      "trials_with_nonempty_intermediate_text": 0
+    },
+    "disconnect_before_effect|neutral": {
+      "trials": 30,
+      "trials_with_nonempty_intermediate_text": 0
+    },
+    "disconnect_before_effect|state-aware": {
+      "trials": 30,
+      "trials_with_nonempty_intermediate_text": 0
+    }
+  },
+  "method": "Count a trial when any model turn that also emitted a tool call contained nonempty output_text."
+}

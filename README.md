@@ -163,11 +163,12 @@ do-not-retry instructions is published separately under
 structured trial record and a standard-library verifier without changing the
 original demo's behavior.
 
-The next study is preregistered under
+The paired-boundary follow-up is published under
 [`studies/0003-retry-boundary/`](studies/0003-retry-boundary/). It tests the
 same uncertain result on both sides of the effect boundary: once before the
-refund reaches the server and once after the refund commits. The registered
-plan and frozen trial order were published before any live model trial.
+refund reaches the server and once after the refund commits. Its registered
+plan and frozen trial order preceded all 240 live trials; the folder now includes
+the complete scrubbed evidence and a standard-library verifier.
 
 Keeping these streams separate is intentional. The first committed refund
 receipt never reached the agent and therefore cannot appear as a successful
