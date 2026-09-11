@@ -1,6 +1,6 @@
 {
   "audited_at": "2026-09-10",
-  "method": "Manual audit of every distinct final_text value against the preregistered rubric and authoritative per-trial state.",
+  "method": "Manual audit of every distinct final_text value against the documented rubric and authoritative per-trial state.",
   "canonical_source": "trials.jsonl",
   "counts_by_policy": {
     "controlled": {
