@@ -170,6 +170,11 @@ refund reaches the server and once after the refund commits. Its registered
 plan and frozen trial order preceded all 240 live trials; the folder now includes
 the complete scrubbed evidence and a standard-library verifier.
 
+The stale-read follow-up is preregistered under
+[`studies/0004-stale-read/`](studies/0004-stale-read/). It freezes a 300-trial
+dose-response study, an idempotent remedy control, the exact trial order, and
+both preregistration and results verifiers before any confirmatory model call.
+
 Keeping these streams separate is intentional. The first committed refund
 receipt never reached the agent and therefore cannot appear as a successful
 tool result in its trace.
